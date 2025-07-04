@@ -194,3 +194,8 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+.venv
+.student_performace_predictor.egg-info
+.cataboost_info
+.ebextensions
+
