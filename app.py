@@ -19,19 +19,21 @@ def predict_datapoint():
             writing_score = request.form.get('writing_score')
             reading_score = request.form.get('reading_score')
 
-            # Check if any input is missing
+            # Check for missing inputs
             if not all([gender, race_ethnicity, parental_level_of_education, lunch, test_preparation_course, writing_score, reading_score]):
                 return render_template("home.html", results="Please fill all the fields!")
 
-            # Dummy logic — replace with actual prediction
+            # Dummy prediction logic (replace with your model)
             predicted_score = (int(reading_score) + int(writing_score)) // 2
 
             return render_template("home.html", results=predicted_score)
         
         except Exception as e:
             print("Exception in /predict:", e)
-            return f"Something went wrong: {e}", 500
+            return render_template("home.html", results=f"Error: {str(e)}")
 
-    return render_template("home.html")
+    # Important: Provide results=None in GET mode to avoid template issues
+    return render_template("home.html", results=None)
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
